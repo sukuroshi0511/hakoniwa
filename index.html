@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hakoniwa — つくって、売れる。2Dゲーム制作ソフト</title>
+<meta name="description" content="Hakoniwaは、イベントシート方式で直感的に2Dゲームを作れるWindows向け制作ソフト。作った作品は無料プランでも有償販売OK。書き出したexeは恒久動作。">
+<meta property="og:title" content="Hakoniwa — つくって、売れる。2Dゲーム制作ソフト">
+<meta property="og:description" content="イベントシート方式で2Dゲームを直感的に。作った作品は無料プランでも販売OK・exeは恒久動作。">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#0f1117; --bg2:#141826; --panel:#191c26; --panel2:#1f2433;
+    --line:#2a3142; --txt:#e8ebf2; --mut:#9aa3b8; --mut2:#717a90;
+    --grn:#4ade80; --grn2:#3ddc84; --grnd:#16331f; --blue:#5b8cff;
+    --r:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:system-ui,"Segoe UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{line-height:1.3;margin:0}
+  .accent{color:var(--grn)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:11px;
+    font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;font-size:15px;transition:.15s}
+  .btn-primary{background:var(--grn);color:#04220f}
+  .btn-primary:hover{background:var(--grn2);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--txt)}
+  .btn-ghost:hover{border-color:var(--grn);color:var(--grn)}
+  .muted{color:var(--mut)}
+
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:20;background:rgba(15,17,23,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-weight:800;font-size:20px;letter-spacing:.5px}
+  .logo .sub{color:var(--mut2);font-weight:600;font-size:13px;margin-left:8px}
+  .nav nav{display:flex;gap:24px;align-items:center}
+  .nav nav a{text-decoration:none;color:var(--mut);font-size:14px;font-weight:600}
+  .nav nav a:hover{color:var(--txt)}
+  .nav .dl{padding:9px 16px}
+  @media(max-width:640px){.nav nav a:not(.dl){display:none}}
+
+  /* hero */
+  .hero{padding:84px 0 60px;text-align:center;
+    background:radial-gradient(900px 380px at 50% -60px,rgba(74,222,128,.13),transparent 70%)}
+  .badge{display:inline-block;font-size:12.5px;font-weight:700;color:var(--grn);
+    background:var(--grnd);border:1px solid #234a30;padding:5px 13px;border-radius:999px;margin-bottom:22px}
+  .hero h1{font-size:clamp(34px,6vw,58px);font-weight:850;letter-spacing:-.5px}
+  .hero p.lead{font-size:clamp(16px,2.4vw,20px);color:var(--mut);max-width:640px;margin:20px auto 0}
+  .hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .hero .os{margin-top:14px;font-size:13px;color:var(--mut2)}
+  .shot{margin:54px auto 0;max-width:1000px;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+  .shot img{display:block;width:100%}
+
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  .eyebrow{color:var(--grn);font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+  .sec-title{font-size:clamp(26px,4vw,36px);font-weight:800;margin:10px 0 8px}
+  .sec-sub{color:var(--mut);max-width:680px}
+
+  /* features */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .card .ic{width:42px;height:42px;border-radius:10px;background:var(--grnd);display:flex;
+    align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+  .card h3{font-size:17px;margin-bottom:6px}
+  .card p{color:var(--mut);font-size:14.5px;margin:0}
+
+  /* video */
+  .video-frame{margin-top:34px;aspect-ratio:16/9;width:100%;border-radius:16px;border:1px dashed var(--line);
+    background:linear-gradient(180deg,var(--bg2),var(--panel));display:flex;flex-direction:column;
+    align-items:center;justify-content:center;color:var(--mut2);gap:10px}
+  .video-frame .play{width:64px;height:64px;border-radius:50%;background:var(--grnd);border:1px solid #234a30;
+    display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--grn)}
+
+  /* shots row */
+  .shots2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+  @media(max-width:740px){.shots2{grid-template-columns:1fr}}
+  .shots2 figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+  .shots2 img{display:block;width:100%}
+  .shots2 figcaption{padding:10px 14px;font-size:13px;color:var(--mut)}
+
+  /* pricing */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;align-items:start}
+  @media(max-width:860px){.plans{grid-template-columns:1fr}}
+  .plan{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative}
+  .plan.feat{border-color:var(--grn);box-shadow:0 0 0 1px var(--grn),0 24px 60px -30px rgba(74,222,128,.4)}
+  .plan .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grn);color:#04220f;
+    font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px}
+  .plan h3{font-size:20px}
+  .plan .who{color:var(--mut);font-size:13.5px;margin-top:2px}
+  .plan .price{margin:18px 0 2px;font-size:30px;font-weight:850}
+  .plan .price small{font-size:14px;font-weight:600;color:var(--mut)}
+  .plan .alt{font-size:13px;color:var(--mut2)}
+  .plan ul{list-style:none;padding:0;margin:18px 0 22px;font-size:14px}
+  .plan li{padding:7px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}
+  .plan li span:last-child{color:var(--txt);font-weight:700}
+  .plan .buy{display:flex;flex-direction:column;gap:8px}
+  .plan .buy a{justify-content:center;width:100%}
+
+  /* compare table */
+  .tablewrap{margin-top:36px;overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+  th,td{padding:13px 16px;text-align:center;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left;color:var(--mut)}
+  thead th{background:var(--panel2);font-weight:800}
+  thead th.pro{color:var(--grn)}
+  tbody tr:last-child td{border-bottom:0}
+  .inf{color:var(--grn);font-weight:800}
+
+  /* download */
+  .dlbox{margin-top:36px;background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:34px;text-align:center}
+  .dlbox h3{font-size:22px}
+  .dlbox .meta{color:var(--mut2);font-size:13px;margin-top:8px}
+
+  /* faq */
+  details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 20px;margin-top:12px}
+  details+details{margin-top:10px}
+  summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"＋";color:var(--grn);font-weight:800;margin-right:10px}
+  details[open] summary::before{content:"－"}
+  details p{color:var(--mut);margin:0 0 16px;font-size:14.5px}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mut2);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="logo">Hakoniwa<span class="sub">2D Game Maker</span></div>
+    <nav>
+      <a href="#features">特徴</a>
+      <a href="#plans">プラン・料金</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary dl" href="#download">ダウンロード</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="badge">Windows 版・無料で始められる</span>
+    <h1>つくって、<span class="accent">売れる。</span><br>2Dゲーム制作ソフト</h1>
+    <p class="lead">イベントシートで直感的に。タイルマップ・アニメ・物理・カメラまで。
+      作った作品は<b>無料プランでも有償販売OK</b>、書き出したアプリは<b>恒久的に動作</b>します。</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#download">▼ 無料でダウンロード</a>
+      <a class="btn btn-ghost" href="#plans">プランを見る</a>
+    </div>
+    <div class="os">Windows 10 / 11（64bit）・インストール不要のポータブル版</div>
+    <div class="shot"><img src="screenshots/editor.png" alt="Hakoniwa エディタ画面（タイルマップ編集）"></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <div class="eyebrow">Features</div>
+    <h2 class="sec-title">プログラミング不要。<br class="sp">組み立てるだけでゲームになる。</h2>
+    <p class="sec-sub">「もし◯◯なら△△する」をならべるイベントシート方式。コードを書かずにロジックを組めます。</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🧩</div><h3>イベントシート方式</h3><p>条件とアクションを並べるだけ。入れ子・複合条件にも対応し、複雑な挙動も表で明示できます。</p></div>
+      <div class="card"><div class="ic">🗺️</div><h3>タイルマップ</h3><p>マップをタイルで手描き。当たり判定（ソリッド）も設定でき、広いステージも作れます。</p></div>
+      <div class="card"><div class="ic">🎞️</div><h3>アニメ・判定マスク</h3><p>スプライトアニメと当たり判定マスクを定義。見た目と判定を別々に正確にコントロール。</p></div>
+      <div class="card"><div class="ic">🎥</div><h3>カメラ</h3><p>追従・スクロールなどカメラ挙動を設定。横スクロールから見下ろし型まで。</p></div>
+      <div class="card"><div class="ic">⚙️</div><h3>物理</h3><p>重力・速度・衝突などの物理挙動を組み込み。プラットフォーマーも手軽に。</p></div>
+      <div class="card"><div class="ic">💴</div><h3>作品の販売は自由</h3><p><b>無料プランで作った作品でも有償販売OK</b>。書き出したexeはライセンスに関係なく恒久動作します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="wrap">
+    <div class="eyebrow">Demo</div>
+    <h2 class="sec-title">動かしているところを見る</h2>
+    <p class="sec-sub">紹介動画は近日公開予定です。</p>
+    <!-- 公開時はこの枠を YouTube 埋め込みに差し替え:
+         <div class="video-frame" style="padding:0;border-style:solid">
+           <iframe width="100%" height="100%" style="border:0;border-radius:16px"
+             src="https://www.youtube.com/embed/動画ID" allowfullscreen></iframe>
+         </div> -->
+    <div class="video-frame">
+      <div class="play">▶</div>
+      <div>紹介動画 — Coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="shots">
+  <div class="wrap">
+    <div class="eyebrow">Screenshots</div>
+    <h2 class="sec-title">エディタ画面</h2>
+    <div class="shots2">
+      <figure><img src="screenshots/editor.png" alt="タイルマップ編集中のエディタ"><figcaption>タイルマップとシーン編集</figcaption></figure>
+      <figure><img src="screenshots/editor-empty.png" alt="Hakoniwa エディタの全体UI"><figcaption>シーン／プロパティ／プラン管理のUI</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section id="plans">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2 class="sec-title">プランと料金</h2>
+    <p class="sec-sub">まずは無料で。物足りなくなったらいつでもアップグレード。料金はすべて税込です。</p>
+
+    <div class="plans">
+      <!-- FREE -->
+      <div class="plan">
+        <h3>Free</h3>
+        <div class="who">まずは試したい人に</div>
+        <div class="price">¥0</div>
+        <div class="alt">ずっと無料</div>
+        <ul>
+          <li><span>シーン</span><span>3</span></li>
+          <li><span>アクション+条件</span><span>120</span></li>
+          <li><span>オブジェクト定義</span><span>30</span></li>
+          <li><span>作品の有償販売</span><span>OK</span></li>
+        </ul>
+        <div class="buy"><a class="btn btn-ghost" href="#download">ダウンロード</a></div>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan feat">
+        <div class="tag">人気</div>
+        <h3>Pro</h3>
+        <div class="who">本格的に作る同人クリエイター</div>
+        <div class="price">¥300<small> /月</small></div>
+        <div class="alt">または ¥3,000 /年（2か月分お得）</div>
+        <ul>
+          <li><span>シーン</span><span>50</span></li>
+          <li><span>アクション+条件</span><span>3,000</span></li>
+          <li><span>オブジェクト定義</span><span>600</span></li>
+          <li><span>マップセル（最大）</span><span>40,000</span></li>
+        </ul>
+        <div class="buy">
+          <a class="btn btn-primary" href="https://buy.stripe.com/4gM6oI14B7f0bZNc3OgEg00">月額 ¥300 で購入</a>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/14AcN65kReHs3th4BmgEg01">年額 ¥3,000 で購入</a>
+        </div>
+      </div>
+
+      <!-- STUDIO -->
+      <div class="plan">
+        <h3>Studio</h3>
+        <div class="who">制限なしで作り込みたい人に</div>
+        <div class="price">¥1,500<small> /月</small></div>
+        <div class="alt">または ¥15,000 /年（2か月分お得）</div>
+        <ul>
+          <li><span>シーン</span><span class="inf">∞</span></li>
+          <li><span>アクション+条件</span><span class="inf">∞</span></li>
+          <li><span>オブジェクト定義</span><span class="inf">∞</span></li>
+          <li><span>すべての上限</span><span class="inf">無制限</span></li>
+        </ul>
+        <div class="buy">
+          <a class="btn btn-primary" href="https://buy.stripe.com/bJeeVe14BczkfbZ5FqgEg02">月額 ¥1,500 で購入</a>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/8x23cw3cJarce7V7NygEg03">年額 ¥15,000 で購入</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARE TABLE -->
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>項目</th><th>Free</th><th class="pro">Pro（同人）</th><th>Studio（無制限）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>シーン</td><td>3</td><td>50</td><td class="inf">∞</td></tr>
+          <tr><td>アクション+条件</td><td>120</td><td>3,000</td><td class="inf">∞</td></tr>
+          <tr><td>オブジェクト定義</td><td>30</td><td>600</td><td class="inf">∞</td></tr>
+          <tr><td>変数</td><td>15</td><td>400</td><td class="inf">∞</td></tr>
+          <tr><td>タイル種類</td><td>4</td><td>50</td><td class="inf">∞</td></tr>
+          <tr><td>マップセル（最大）</td><td>1,500</td><td>40,000</td><td class="inf">∞</td></tr>
+          <tr><td>アニメ定義</td><td>3</td><td>50</td><td class="inf">∞</td></tr>
+          <tr><td>作品の有償販売</td><td>OK</td><td>OK</td><td>OK</td></tr>
+          <tr><td>料金（税込）</td><td>無料</td><td>¥300/月・¥3,000/年</td><td>¥1,500/月・¥15,000/年</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:14px">
+      ※ 上限を超えたプロジェクトは「読み取り専用」になります（既存の編集・書き出しは可能、新規追加が不可）。
+      購入後の決済完了ページにライセンスキーが表示されます。Hakoniwa の<b>設定 → ライセンスキー</b>に貼り付けて「保存/検証」でプランが有効化されます。
+    </p>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <div class="wrap">
+    <div class="eyebrow">Download</div>
+    <h2 class="sec-title">ダウンロード</h2>
+    <div class="dlbox">
+      <h3>Hakoniwa for Windows</h3>
+      <p class="muted">無料プランで今すぐ始められます。</p>
+      <p style="margin:22px 0 6px">
+        <a class="btn btn-primary" href="https://github.com/sukuroshi0511/hakoniwa/releases/latest/download/Hakoniwa-Windows-x64.zip">⬇ Windows 版をダウンロード（ZIP）</a>
+      </p>
+      <p class="meta">Windows 10/11 64bit ・ インストール不要 ・
+        <a href="https://github.com/sukuroshi0511/hakoniwa/releases/latest" style="color:var(--grn)">すべてのバージョン</a></p>
+      <p class="meta" style="margin-top:14px">ZIPを展開して <b>Hakoniwa.exe</b> を実行してください。
+        初回起動時に Windows の SmartScreen 警告が出る場合は「詳細情報 → 実行」で起動できます（現在アプリは未署名のためです）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="sec-title">よくある質問</h2>
+
+    <details open>
+      <summary>無料プランで作ったゲームを販売してもいいですか？</summary>
+      <p>はい。無料プランを含め、Hakoniwa で作った作品の有償販売を無条件で許可しています。書き出したアプリ（exe）はライセンスの有無に関わらず恒久的に動作します。</p>
+    </details>
+    <details>
+      <summary>購入後、ライセンスキーはどこで受け取れますか？</summary>
+      <p>購入（決済）完了後に表示されるページにライセンスキーが表示されます。そのページはブックマークで再表示できます。キーは Hakoniwa の「設定 → ライセンスキー」に貼り付け、「保存/検証」を押すとプランが有効になります。</p>
+    </details>
+    <details>
+      <summary>月額と年額、解約はできますか？</summary>
+      <p>いつでも解約できます。解約後は無料プランの上限に戻りますが、上限を超えたプロジェクトも閲覧・書き出しは可能です（新規追加のみ不可）。</p>
+    </details>
+    <details>
+      <summary>起動時に「WindowsによってPCが保護されました」と出ます</summary>
+      <p>アプリが現在コード署名されていないために表示される警告です。「詳細情報」→「実行」で起動できます。署名対応は今後予定しています。</p>
+    </details>
+    <details>
+      <summary>アップデートはどうやって入手しますか？</summary>
+      <p>新しいバージョンはこのページの「ダウンロード」から最新版を再取得してください（ZIPを展開して差し替え）。セーブデータは別の場所に保存されるため、差し替えても消えません。将来的にアプリ内からの自動更新に対応予定です。</p>
+    </details>
+    <details>
+      <summary>Mac / Linux 版はありますか？</summary>
+      <p>現在は Windows（64bit）版のみです。</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Hakoniwa — 2D Game Maker ／ © 2026 sukuroshi0511<br>
+    お問い合わせは購入時のメールアドレスを添えてご連絡ください。
+  </div>
+</footer>
+
+</body>
+</html>

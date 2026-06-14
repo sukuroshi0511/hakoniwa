@@ -182,15 +182,16 @@
   <div class="wrap">
     <div class="eyebrow">Demo</div>
     <h2 class="sec-title">動かしているところを見る</h2>
-    <p class="sec-sub">紹介動画は近日公開予定です。</p>
-    <!-- 公開時はこの枠を YouTube 埋め込みに差し替え:
+    <p class="sec-sub">エディタで実際にデモを開いている様子です（自動キャプチャ）。</p>
+    <!-- 後日ナレーション付きの紹介動画を作ったら、この枠を YouTube 埋め込みに差し替え:
          <div class="video-frame" style="padding:0;border-style:solid">
            <iframe width="100%" height="100%" style="border:0;border-radius:16px"
              src="https://www.youtube.com/embed/動画ID" allowfullscreen></iframe>
          </div> -->
-    <div class="video-frame">
-      <div class="play">▶</div>
-      <div>紹介動画 — Coming soon</div>
+    <div class="video-frame" style="padding:0;border-style:solid;aspect-ratio:1280/800;overflow:hidden">
+      <video src="media/editor-demo.mp4" poster="media/editor-demo-poster.jpg"
+        autoplay muted loop playsinline preload="metadata"
+        style="width:100%;height:100%;object-fit:cover;border-radius:16px"></video>
     </div>
   </div>
 </section>

@@ -42,6 +42,11 @@
   .nav .dl{padding:9px 16px}
   @media(max-width:640px){.nav nav a:not(.dl){display:none}}
 
+  /* lang select */
+  #langSelect{background:var(--panel2);color:var(--mut);border:1px solid var(--line);
+    border-radius:7px;font-size:13px;padding:4px 8px;cursor:pointer;outline:none}
+  #langSelect:hover,#langSelect:focus{border-color:var(--grn);color:var(--txt)}
+
   /* hero */
   .hero{padding:84px 0 60px;text-align:center;
     background:radial-gradient(900px 380px at 50% -60px,rgba(74,222,128,.13),transparent 70%)}
@@ -136,10 +141,11 @@
   <div class="wrap">
     <div class="logo">Hakoniwa Kreo<span class="sub">2D Game Maker</span></div>
     <nav>
-      <a href="#features">特徴</a>
-      <a href="#plans">プラン・料金</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn btn-primary dl" href="#download">ダウンロード</a>
+      <a href="#features" data-i18n="nav.features">特徴</a>
+      <a href="#plans" data-i18n="nav.plans">プラン・料金</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <select id="langSelect" aria-label="Language"></select>
+      <a class="btn btn-primary dl" href="#download" data-i18n="nav.download">ダウンロード</a>
     </nav>
   </div>
 </header>
@@ -147,15 +153,15 @@
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <span class="badge">Windows 版・無料で始められる</span>
-    <h1>つくって、<span class="accent">売れる。</span><br>2Dゲーム制作ソフト</h1>
-    <p class="lead">イベントシートで直感的に。タイルマップ・アニメ・物理・カメラまで。
+    <span class="badge" data-i18n="hero.badge">Windows 版・無料で始められる</span>
+    <h1 data-i18n="hero.h1">つくって、<span class="accent">売れる。</span><br>2Dゲーム制作ソフト</h1>
+    <p class="lead" data-i18n="hero.lead">イベントシートで直感的に。タイルマップ・アニメ・物理・カメラまで。
       作った作品は<b>無料プランでも有償販売OK</b>、書き出したアプリは<b>恒久的に動作</b>します。</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#download">▼ 無料でダウンロード</a>
-      <a class="btn btn-ghost" href="#plans">プランを見る</a>
+      <a class="btn btn-primary" href="#download" data-i18n="hero.btn.download">▼ 無料でダウンロード</a>
+      <a class="btn btn-ghost" href="#plans" data-i18n="hero.btn.plans">プランを見る</a>
     </div>
-    <div class="os">Windows 10 / 11（64bit）・インストール不要のポータブル版</div>
+    <div class="os" data-i18n="hero.os">Windows 10 / 11（64bit）・インストール不要のポータブル版</div>
     <div class="shot"><img src="screenshots/editor-clipbool.png" alt="Hakoniwa Kreo エディタ画面（ブールクリップで星型の窓に切り抜く演出を編集）"></div>
   </div>
 </div>
@@ -164,15 +170,15 @@
 <section id="features">
   <div class="wrap">
     <div class="eyebrow">Features</div>
-    <h2 class="sec-title">プログラミング不要。<br class="sp">組み立てるだけでゲームになる。</h2>
-    <p class="sec-sub">「もし◯◯なら△△する」をならべるイベントシート方式。コードを書かずにロジックを組めます。</p>
+    <h2 class="sec-title" data-i18n="feat.title">プログラミング不要。<br class="sp">組み立てるだけでゲームになる。</h2>
+    <p class="sec-sub" data-i18n="feat.sub">「もし◯◯なら△△する」をならべるイベントシート方式。コードを書かずにロジックを組めます。</p>
     <div class="grid">
-      <div class="card"><div class="ic">🧩</div><h3>イベントシート方式</h3><p>条件とアクションを並べるだけ。入れ子・複合条件にも対応し、複雑な挙動も表で明示できます。</p></div>
-      <div class="card"><div class="ic">🗺️</div><h3>タイルマップ</h3><p>マップをタイルで手描き。当たり判定（ソリッド）も設定でき、広いステージも作れます。</p></div>
-      <div class="card"><div class="ic">🎞️</div><h3>アニメ・判定マスク</h3><p>スプライトアニメと当たり判定マスクを定義。見た目と判定を別々に正確にコントロール。</p></div>
-      <div class="card"><div class="ic">🎥</div><h3>カメラ</h3><p>追従・スクロールなどカメラ挙動を設定。横スクロールから見下ろし型まで。</p></div>
-      <div class="card"><div class="ic">⚙️</div><h3>物理</h3><p>重力・速度・衝突などの物理挙動を組み込み。プラットフォーマーも手軽に。</p></div>
-      <div class="card"><div class="ic">💴</div><h3>作品の販売は自由</h3><p><b>無料プランで作った作品でも有償販売OK</b>。書き出したexeはライセンスに関係なく恒久動作します。</p></div>
+      <div class="card"><div class="ic">🧩</div><h3 data-i18n="feat.eventsheet.title">イベントシート方式</h3><p data-i18n="feat.eventsheet.desc">条件とアクションを並べるだけ。入れ子・複合条件にも対応し、複雑な挙動も表で明示できます。</p></div>
+      <div class="card"><div class="ic">🗺️</div><h3 data-i18n="feat.tilemap.title">タイルマップ</h3><p data-i18n="feat.tilemap.desc">マップをタイルで手描き。当たり判定（ソリッド）も設定でき、広いステージも作れます。</p></div>
+      <div class="card"><div class="ic">🎞️</div><h3 data-i18n="feat.anim.title">アニメ・判定マスク</h3><p data-i18n="feat.anim.desc">スプライトアニメと当たり判定マスクを定義。見た目と判定を別々に正確にコントロール。</p></div>
+      <div class="card"><div class="ic">🎥</div><h3 data-i18n="feat.camera.title">カメラ</h3><p data-i18n="feat.camera.desc">追従・スクロールなどカメラ挙動を設定。横スクロールから見下ろし型まで。</p></div>
+      <div class="card"><div class="ic">⚙️</div><h3 data-i18n="feat.physics.title">物理</h3><p data-i18n="feat.physics.desc">重力・速度・衝突などの物理挙動を組み込み。プラットフォーマーも手軽に。</p></div>
+      <div class="card"><div class="ic">💴</div><h3 data-i18n="feat.sell.title">作品の販売は自由</h3><p data-i18n="feat.sell.desc"><b>無料プランで作った作品でも有償販売OK</b>。書き出したexeはライセンスに関係なく恒久動作します。</p></div>
     </div>
   </div>
 </section>
@@ -181,13 +187,8 @@
 <section id="video">
   <div class="wrap">
     <div class="eyebrow">Demo</div>
-    <h2 class="sec-title">動かしているところを見る</h2>
-    <p class="sec-sub">エディタで実際にデモを開いている様子です（自動キャプチャ）。</p>
-    <!-- 後日ナレーション付きの紹介動画を作ったら、この枠を YouTube 埋め込みに差し替え:
-         <div class="video-frame" style="padding:0;border-style:solid">
-           <iframe width="100%" height="100%" style="border:0;border-radius:16px"
-             src="https://www.youtube.com/embed/動画ID" allowfullscreen></iframe>
-         </div> -->
+    <h2 class="sec-title" data-i18n="video.title">動かしているところを見る</h2>
+    <p class="sec-sub" data-i18n="video.sub">エディタで実際にデモを開いている様子です（自動キャプチャ）。</p>
     <div class="video-frame" style="padding:0;border-style:solid;aspect-ratio:1280/800;overflow:hidden">
       <video src="media/editor-demo.mp4" poster="media/editor-demo-poster.jpg"
         autoplay muted loop playsinline preload="metadata"
@@ -200,12 +201,12 @@
 <section id="shots">
   <div class="wrap">
     <div class="eyebrow">Screenshots</div>
-    <h2 class="sec-title">エディタ画面</h2>
+    <h2 class="sec-title" data-i18n="shots.title">エディタ画面</h2>
     <div class="shots2">
-      <figure><img src="screenshots/editor-events.png" alt="イベントシートで挙動を設定している画面"><figcaption>イベントシートで挙動を設定（条件→動作）</figcaption></figure>
-      <figure><img src="screenshots/editor-tilemap.png" alt="タイルマップでフィールドを作成中のエディタ"><figcaption>タイルマップでマップを作成</figcaption></figure>
-      <figure><img src="screenshots/editor-physics.png" alt="物理デモ（跳ね返るボールと箱）を編集している画面"><figcaption>物理（重力・速度・衝突）を組み込み</figcaption></figure>
-      <figure><img src="screenshots/editor-platformer.png" alt="横スクロールのプラットフォーマーを編集している画面"><figcaption>カメラ追従で横スクロールも</figcaption></figure>
+      <figure><img src="screenshots/editor-events.png" alt="イベントシートで挙動を設定している画面"><figcaption data-i18n="shots.cap1">イベントシートで挙動を設定（条件→動作）</figcaption></figure>
+      <figure><img src="screenshots/editor-tilemap.png" alt="タイルマップでフィールドを作成中のエディタ"><figcaption data-i18n="shots.cap2">タイルマップでマップを作成</figcaption></figure>
+      <figure><img src="screenshots/editor-physics.png" alt="物理デモ（跳ね返るボールと箱）を編集している画面"><figcaption data-i18n="shots.cap3">物理（重力・速度・衝突）を組み込み</figcaption></figure>
+      <figure><img src="screenshots/editor-platformer.png" alt="横スクロールのプラットフォーマーを編集している画面"><figcaption data-i18n="shots.cap4">カメラ追従で横スクロールも</figcaption></figure>
     </div>
   </div>
 </section>
@@ -214,60 +215,60 @@
 <section id="plans">
   <div class="wrap">
     <div class="eyebrow">Pricing</div>
-    <h2 class="sec-title">プランと料金</h2>
-    <p class="sec-sub">まずは無料で。物足りなくなったらいつでもアップグレード。料金はすべて税込です。</p>
-    <p class="sec-sub" style="font-size:13px;opacity:.85">有料プラン（月額・年額）は<b>自動更新のサブスクリプション</b>です。解約しない限り、各請求期間ごとに自動で更新・課金されます。解約は<a href="https://billing.stripe.com/p/login/4gM6oI14B7f0bZNc3OgEg00" style="color:var(--grn)">カスタマーポータル</a>からいつでも可能です（解約後も期間終了まで利用可・日割り返金なし）。</p>
+    <h2 class="sec-title" data-i18n="plan.title">プランと料金</h2>
+    <p class="sec-sub" data-i18n="plan.sub">まずは無料で。物足りなくなったらいつでもアップグレード。料金はすべて税込です。</p>
+    <p class="sec-sub" style="font-size:13px;opacity:.85" data-i18n="plan.sub2">有料プラン（月額・年額）は<b>自動更新のサブスクリプション</b>です。解約しない限り、各請求期間ごとに自動で更新・課金されます。解約は<a href="https://billing.stripe.com/p/login/4gM6oI14B7f0bZNc3OgEg00" style="color:var(--grn)">カスタマーポータル</a>からいつでも可能です（解約後も期間終了まで利用可・日割り返金なし）。</p>
 
     <div class="plans">
       <!-- FREE -->
       <div class="plan">
         <h3>Free</h3>
-        <div class="who">まずは試したい人に</div>
+        <div class="who" data-i18n="plan.free.who">まずは試したい人に</div>
         <div class="price">¥0</div>
-        <div class="alt">ずっと無料</div>
+        <div class="alt" data-i18n="plan.free.alt">ずっと無料</div>
         <ul>
-          <li><span>シーン</span><span>3</span></li>
-          <li><span>アクション+条件</span><span>120</span></li>
-          <li><span>オブジェクト定義</span><span>30</span></li>
-          <li><span>作品の有償販売</span><span>OK</span></li>
+          <li><span data-i18n="plan.row.scenes">シーン</span><span>3</span></li>
+          <li><span data-i18n="plan.row.actions">アクション+条件</span><span>120</span></li>
+          <li><span data-i18n="plan.row.objects">オブジェクト定義</span><span>30</span></li>
+          <li><span data-i18n="plan.row.sell">作品の有償販売</span><span>OK</span></li>
         </ul>
-        <div class="buy"><a class="btn btn-ghost" href="#download">ダウンロード</a></div>
+        <div class="buy"><a class="btn btn-ghost" href="#download" data-i18n="plan.free.btn">ダウンロード</a></div>
       </div>
 
       <!-- PRO -->
       <div class="plan feat">
-        <div class="tag">人気</div>
+        <div class="tag" data-i18n="plan.pro.tag">人気</div>
         <h3>Pro</h3>
-        <div class="who">本格的に作る同人クリエイター</div>
-        <div class="price">¥300<small> /月</small></div>
-        <div class="alt">または ¥3,000 /年（2か月分お得）</div>
+        <div class="who" data-i18n="plan.pro.who">本格的に作る同人クリエイター</div>
+        <div class="price">¥300<small data-i18n="plan.per.month"> /月</small></div>
+        <div class="alt" data-i18n="plan.pro.alt">または ¥3,000 /年（2か月分お得）</div>
         <ul>
-          <li><span>シーン</span><span>50</span></li>
-          <li><span>アクション+条件</span><span>3,000</span></li>
-          <li><span>オブジェクト定義</span><span>600</span></li>
-          <li><span>マップセル（最大）</span><span>40,000</span></li>
+          <li><span data-i18n="plan.row.scenes">シーン</span><span>50</span></li>
+          <li><span data-i18n="plan.row.actions">アクション+条件</span><span>3,000</span></li>
+          <li><span data-i18n="plan.row.objects">オブジェクト定義</span><span>600</span></li>
+          <li><span data-i18n="plan.row.mapcells">マップセル（最大）</span><span>40,000</span></li>
         </ul>
         <div class="buy">
-          <a class="btn btn-primary" href="https://buy.stripe.com/4gM6oI14B7f0bZNc3OgEg00">月額 ¥300 で購入</a>
-          <a class="btn btn-ghost" href="https://buy.stripe.com/14AcN65kReHs3th4BmgEg01">年額 ¥3,000 で購入</a>
+          <a class="btn btn-primary" href="https://buy.stripe.com/4gM6oI14B7f0bZNc3OgEg00" data-i18n="plan.pro.btn.month">月額 ¥300 で購入</a>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/14AcN65kReHs3th4BmgEg01" data-i18n="plan.pro.btn.year">年額 ¥3,000 で購入</a>
         </div>
       </div>
 
       <!-- STUDIO -->
       <div class="plan">
         <h3>Studio</h3>
-        <div class="who">制限なしで作り込みたい人に</div>
-        <div class="price">¥1,500<small> /月</small></div>
-        <div class="alt">または ¥15,000 /年（2か月分お得）</div>
+        <div class="who" data-i18n="plan.studio.who">制限なしで作り込みたい人に</div>
+        <div class="price">¥1,500<small data-i18n="plan.per.month"> /月</small></div>
+        <div class="alt" data-i18n="plan.studio.alt">または ¥15,000 /年（2か月分お得）</div>
         <ul>
-          <li><span>シーン</span><span class="inf">∞</span></li>
-          <li><span>アクション+条件</span><span class="inf">∞</span></li>
-          <li><span>オブジェクト定義</span><span class="inf">∞</span></li>
-          <li><span>すべての上限</span><span class="inf">無制限</span></li>
+          <li><span data-i18n="plan.row.scenes">シーン</span><span class="inf">∞</span></li>
+          <li><span data-i18n="plan.row.actions">アクション+条件</span><span class="inf">∞</span></li>
+          <li><span data-i18n="plan.row.objects">オブジェクト定義</span><span class="inf">∞</span></li>
+          <li><span data-i18n="plan.row.alllimits">すべての上限</span><span class="inf" data-i18n="plan.row.unlimited">無制限</span></li>
         </ul>
         <div class="buy">
-          <a class="btn btn-primary" href="https://buy.stripe.com/bJeeVe14BczkfbZ5FqgEg02">月額 ¥1,500 で購入</a>
-          <a class="btn btn-ghost" href="https://buy.stripe.com/8x23cw3cJarce7V7NygEg03">年額 ¥15,000 で購入</a>
+          <a class="btn btn-primary" href="https://buy.stripe.com/bJeeVe14BczkfbZ5FqgEg02" data-i18n="plan.studio.btn.month">月額 ¥1,500 で購入</a>
+          <a class="btn btn-ghost" href="https://buy.stripe.com/8x23cw3cJarce7V7NygEg03" data-i18n="plan.studio.btn.year">年額 ¥15,000 で購入</a>
         </div>
       </div>
     </div>
@@ -276,22 +277,27 @@
     <div class="tablewrap">
       <table>
         <thead>
-          <tr><th>項目</th><th>Free</th><th class="pro">Pro（同人）</th><th>Studio（無制限）</th></tr>
+          <tr>
+            <th data-i18n="tbl.col.item">項目</th>
+            <th>Free</th>
+            <th class="pro" data-i18n="tbl.col.pro">Pro（同人）</th>
+            <th data-i18n="tbl.col.studio">Studio（無制限）</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>シーン</td><td>3</td><td>50</td><td class="inf">∞</td></tr>
-          <tr><td>アクション+条件</td><td>120</td><td>3,000</td><td class="inf">∞</td></tr>
-          <tr><td>オブジェクト定義</td><td>30</td><td>600</td><td class="inf">∞</td></tr>
-          <tr><td>変数</td><td>15</td><td>400</td><td class="inf">∞</td></tr>
-          <tr><td>タイル種類</td><td>4</td><td>50</td><td class="inf">∞</td></tr>
-          <tr><td>マップセル（最大）</td><td>1,500</td><td>40,000</td><td class="inf">∞</td></tr>
-          <tr><td>アニメ定義</td><td>3</td><td>50</td><td class="inf">∞</td></tr>
-          <tr><td>作品の有償販売</td><td>OK</td><td>OK</td><td>OK</td></tr>
-          <tr><td>料金（税込）</td><td>無料</td><td>¥300/月・¥3,000/年</td><td>¥1,500/月・¥15,000/年</td></tr>
+          <tr><td data-i18n="plan.row.scenes">シーン</td><td>3</td><td>50</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="plan.row.actions">アクション+条件</td><td>120</td><td>3,000</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="plan.row.objects">オブジェクト定義</td><td>30</td><td>600</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="tbl.row.vars">変数</td><td>15</td><td>400</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="tbl.row.tiletypes">タイル種類</td><td>4</td><td>50</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="plan.row.mapcells">マップセル（最大）</td><td>1,500</td><td>40,000</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="tbl.row.animdefs">アニメ定義</td><td>3</td><td>50</td><td class="inf">∞</td></tr>
+          <tr><td data-i18n="plan.row.sell">作品の有償販売</td><td>OK</td><td>OK</td><td>OK</td></tr>
+          <tr><td data-i18n="tbl.row.price">料金（税込）</td><td data-i18n="tbl.row.price.free">無料</td><td>¥300/月・¥3,000/年</td><td>¥1,500/月・¥15,000/年</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="muted" style="font-size:13px;margin-top:14px">
+    <p class="muted" style="font-size:13px;margin-top:14px" data-i18n="plan.note">
       ※ 上限を超えたプロジェクトは「読み取り専用」になります（既存の編集・書き出しは可能、新規追加が不可）。
       購入後の決済完了ページにライセンスキーが表示されます。Hakoniwa Kreo の<b>設定 → ライセンスキー</b>に貼り付けて「保存/検証」でプランが有効化されます。
     </p>
@@ -302,16 +308,16 @@
 <section id="download">
   <div class="wrap">
     <div class="eyebrow">Download</div>
-    <h2 class="sec-title">ダウンロード</h2>
+    <h2 class="sec-title" data-i18n="dl.title">ダウンロード</h2>
     <div class="dlbox">
-      <h3>Hakoniwa Kreo for Windows</h3>
-      <p class="muted">無料プランで今すぐ始められます。</p>
+      <h3 data-i18n="dl.box.h3">Hakoniwa Kreo for Windows</h3>
+      <p class="muted" data-i18n="dl.box.sub">無料プランで今すぐ始められます。</p>
       <p style="margin:22px 0 6px">
-        <a class="btn btn-primary" href="https://github.com/sukuroshi0511/hakoniwa/releases/latest/download/Hakoniwa-Windows-x64.zip">⬇ Windows 版をダウンロード（ZIP）</a>
+        <a class="btn btn-primary" href="https://github.com/sukuroshi0511/hakoniwa/releases/latest/download/Hakoniwa-Windows-x64.zip" data-i18n="dl.btn">⬇ Windows 版をダウンロード（ZIP）</a>
       </p>
-      <p class="meta">Windows 10/11 64bit ・ インストール不要 ・
+      <p class="meta" data-i18n="dl.meta1">Windows 10/11 64bit ・ インストール不要 ・
         <a href="https://github.com/sukuroshi0511/hakoniwa/releases/latest" style="color:var(--grn)">すべてのバージョン</a></p>
-      <p class="meta" style="margin-top:14px">ZIPを展開して <b>Hakoniwa.exe</b> を実行してください。
+      <p class="meta" style="margin-top:14px" data-i18n="dl.meta2">ZIPを展開して <b>Hakoniwa.exe</b> を実行してください。
         初回起動時に Windows の SmartScreen 警告が出る場合は「詳細情報 → 実行」で起動できます（現在アプリは未署名のためです）。</p>
     </div>
   </div>
@@ -321,16 +327,16 @@
 <section id="faq">
   <div class="wrap">
     <div class="eyebrow">FAQ</div>
-    <h2 class="sec-title">よくある質問</h2>
+    <h2 class="sec-title" data-i18n="faq.title">よくある質問</h2>
 
     <details open>
-      <summary>無料プランで作ったゲームを販売してもいいですか？</summary>
-      <p>はい。無料プランを含め、Hakoniwa Kreo で作った作品の有償販売を許可しています（下記の「配布・販売の条件」をお守りください）。書き出したアプリ（exe）はライセンスの有無に関わらず恒久的に動作します。</p>
+      <summary data-i18n="faq.sell.q">無料プランで作ったゲームを販売してもいいですか？</summary>
+      <p data-i18n="faq.sell.a">はい。無料プランを含め、Hakoniwa Kreo で作った作品の有償販売を許可しています（下記の「配布・販売の条件」をお守りください）。書き出したアプリ（exe）はライセンスの有無に関わらず恒久的に動作します。</p>
     </details>
     <details>
-      <summary>作品を配布・販売するときの条件はありますか？</summary>
-      <p>以下を守っていただければ、無料・有料を問わず自由に配布・販売できます。</p>
-      <ul style="margin:8px 0 0;padding-left:1.2em;line-height:1.9">
+      <summary data-i18n="faq.terms.q">作品を配布・販売するときの条件はありますか？</summary>
+      <p data-i18n="faq.terms.a1">以下を守っていただければ、無料・有料を問わず自由に配布・販売できます。</p>
+      <ul style="margin:8px 0 0;padding-left:1.2em;line-height:1.9" data-i18n="faq.terms.alist">
         <li><b>制作ソフトとして「Hakoniwa Kreo」を明記</b>してください。作品の紹介ページ・説明文・スタッフロール・README などに「制作：Hakoniwa Kreo」または「Powered by Hakoniwa Kreo」と表記します。</li>
         <li>書き出した作品は<b>起動時に Hakoniwa Kreo のロゴ（スプラッシュ）が約1.5秒表示</b>されます（既定でON。プロジェクト設定でOFFにできますが、その場合も上記のクレジット表記は必須です）。</li>
         <li>配布・販売してよいのは<b>あなたが作った作品（書き出した exe）</b>です。<b>Hakoniwa Kreo 本体（エディタ／エンジン）そのものの再配布・転売・改変配布は不可</b>です。</li>
@@ -338,28 +344,28 @@
       </ul>
     </details>
     <details>
-      <summary>購入後、ライセンスキーはどこで受け取れますか？</summary>
-      <p>購入（決済）完了後に表示されるページにライセンスキーが表示されます。そのページはブックマークで再表示できます。キーは Hakoniwa Kreo の「設定 → ライセンスキー」に貼り付け、「保存/検証」を押すとプランが有効になります。</p>
+      <summary data-i18n="faq.license.q">購入後、ライセンスキーはどこで受け取れますか？</summary>
+      <p data-i18n="faq.license.a">購入（決済）完了後に表示されるページにライセンスキーが表示されます。そのページはブックマークで再表示できます。キーは Hakoniwa Kreo の「設定 → ライセンスキー」に貼り付け、「保存/検証」を押すとプランが有効になります。</p>
     </details>
     <details>
-      <summary>月額と年額、解約はできますか？</summary>
-      <p><a href="https://billing.stripe.com/p/login/4gM6oI14B7f0bZNc3OgEg00">カスタマーポータル</a>からいつでもご自身で解約できます。解約後も当該請求期間の終了までは有料プランを利用でき、その後は無料プランの上限に戻ります（上限を超えたプロジェクトも閲覧・書き出しは可能で、新規追加のみ不可）。日割りでの返金はありません。</p>
+      <summary data-i18n="faq.cancel.q">月額と年額、解約はできますか？</summary>
+      <p data-i18n="faq.cancel.a"><a href="https://billing.stripe.com/p/login/4gM6oI14B7f0bZNc3OgEg00">カスタマーポータル</a>からいつでもご自身で解約できます。解約後も当該請求期間の終了までは有料プランを利用でき、その後は無料プランの上限に戻ります（上限を超えたプロジェクトも閲覧・書き出しは可能で、新規追加のみ不可）。日割りでの返金はありません。</p>
     </details>
     <details>
-      <summary>起動時に「WindowsによってPCが保護されました」と出ます</summary>
-      <p>アプリが現在コード署名されていないために表示される警告です。「詳細情報」→「実行」で起動できます。署名対応は今後予定しています。</p>
+      <summary data-i18n="faq.smartscreen.q">起動時に「WindowsによってPCが保護されました」と出ます</summary>
+      <p data-i18n="faq.smartscreen.a">アプリが現在コード署名されていないために表示される警告です。「詳細情報」→「実行」で起動できます。署名対応は今後予定しています。</p>
     </details>
     <details>
-      <summary>パッケージ化（配布用 exe の書き出し）に失敗します</summary>
-      <p>Windows の「制御されたフォルダーアクセス」やお使いのセキュリティソフトが、書き出し中のファイル操作をブロックしている場合があります。<b>Windows セキュリティ →「ウイルスと脅威の防止」→「ランサムウェアの防止」→「制御されたフォルダーアクセス」</b>で Hakoniwa Kreo を許可（「許可されたアプリ」に追加）するか、一時的にオフにしてから再度お試しください。アンチウイルスの常駐スキャンが一時的にファイルをロックして失敗することもあるため、その場合は少し待って再実行すると通ることがあります。</p>
+      <summary data-i18n="faq.export.q">パッケージ化（配布用 exe の書き出し）に失敗します</summary>
+      <p data-i18n="faq.export.a">Windows の「制御されたフォルダーアクセス」やお使いのセキュリティソフトが、書き出し中のファイル操作をブロックしている場合があります。<b>Windows セキュリティ →「ウイルスと脅威の防止」→「ランサムウェアの防止」→「制御されたフォルダーアクセス」</b>で Hakoniwa Kreo を許可（「許可されたアプリ」に追加）するか、一時的にオフにしてから再度お試しください。アンチウイルスの常駐スキャンが一時的にファイルをロックして失敗することもあるため、その場合は少し待って再実行すると通ることがあります。</p>
     </details>
     <details>
-      <summary>アップデートはどうやって入手しますか？</summary>
-      <p>新しいバージョンはこのページの「ダウンロード」から最新版を再取得してください（ZIPを展開して差し替え）。セーブデータは別の場所に保存されるため、差し替えても消えません。将来的にアプリ内からの自動更新に対応予定です。</p>
+      <summary data-i18n="faq.update.q">アップデートはどうやって入手しますか？</summary>
+      <p data-i18n="faq.update.a">新しいバージョンはこのページの「ダウンロード」から最新版を再取得してください（ZIPを展開して差し替え）。セーブデータは別の場所に保存されるため、差し替えても消えません。将来的にアプリ内からの自動更新に対応予定です。</p>
     </details>
     <details>
-      <summary>Mac / Linux 版はありますか？</summary>
-      <p>現在は Windows（64bit）版のみです。</p>
+      <summary data-i18n="faq.mac.q">Mac / Linux 版はありますか？</summary>
+      <p data-i18n="faq.mac.a">現在は Windows（64bit）版のみです。</p>
     </details>
   </div>
 </section>
@@ -367,16 +373,17 @@
 <footer>
   <div class="wrap">
     <div style="margin-bottom:12px">
-      <a href="legal/tokushoho.html">特定商取引法に基づく表記</a> ／
-      <a href="legal/terms.html">利用規約</a> ／
-      <a href="legal/privacy.html">プライバシーポリシー</a> ／
-      <a href="legal/refund.html">返金・キャンセルポリシー</a> ／
-      <a href="legal/licenses.html">ライセンス表記</a>
+      <a href="legal/tokushoho.html" data-i18n="footer.tokushoho">特定商取引法に基づく表記</a> ／
+      <a href="legal/terms.html" data-i18n="footer.terms">利用規約</a> ／
+      <a href="legal/privacy.html" data-i18n="footer.privacy">プライバシーポリシー</a> ／
+      <a href="legal/refund.html" data-i18n="footer.refund">返金・キャンセルポリシー</a> ／
+      <a href="legal/licenses.html" data-i18n="footer.licenses">ライセンス表記</a>
     </div>
     Hakoniwa Kreo — 2D Game Maker ／ © 2026 sukuroshi0511<br>
-    お問い合わせ：<a href="mailto:sukuroshi0511@gmail.com">sukuroshi0511@gmail.com</a>
+    <span data-i18n="footer.contact">お問い合わせ</span>：<a href="mailto:sukuroshi0511@gmail.com">sukuroshi0511@gmail.com</a>
   </div>
 </footer>
 
+<script src="site-i18n.js"></script>
 </body>
 </html>

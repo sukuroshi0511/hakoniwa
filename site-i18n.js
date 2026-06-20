@@ -879,19 +879,20 @@
     return LANGS.some(function (l) { return l.code === nav; }) ? nav : 'ja';
   }
 
-  // populate the select element ("Language" をヘッダに、ja は「(default)」付き)
+  // populate the select element。先頭に「Language」プレースホルダを置き、常にそれを初期表示にする。
+  // ja は「日本語(default)」表記。
   function buildSelect() {
     var sel = document.getElementById('langSelect');
     if (!sel) return;
-    var grp = document.createElement('optgroup');
-    grp.label = 'Language';
+    var ph = document.createElement('option');
+    ph.value = ''; ph.disabled = true; ph.selected = true; ph.textContent = 'Language';
+    sel.appendChild(ph);
     LANGS.forEach(function (l) {
       var opt = document.createElement('option');
       opt.value = l.code;
       opt.textContent = l.code === 'ja' ? l.name + '(default)' : l.name;
-      grp.appendChild(opt);
+      sel.appendChild(opt);
     });
-    sel.appendChild(grp);
   }
 
   // 初回に各要素のインライン日本語(原文)を保存しておく。その場切替では原文が上書きされるため、
@@ -921,7 +922,7 @@
     });
     try { localStorage.setItem('hakoniwa.site.language', lang); } catch (e) {}
     var sel = document.getElementById('langSelect');
-    if (sel) sel.value = lang;
+    if (sel) sel.selectedIndex = 0; // 常に「Language」プレースホルダを表示
   };
 
   document.addEventListener('DOMContentLoaded', function () {

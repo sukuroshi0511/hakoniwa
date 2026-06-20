@@ -891,21 +891,30 @@
     });
   }
 
+  // 初回に各要素のインライン日本語(原文)を保存しておく。その場切替では原文が上書きされるため、
+  // ja選択時・未訳キー時はこのスナップショットから復元する。
+  var snapped = false;
+  function snapshot() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      if (el.__ja === undefined) el.__ja = el.innerHTML;
+    });
+    snapped = true;
+  }
+
   window.applySiteI18n = function (lang) {
+    if (!snapped) snapshot();
     document.documentElement.lang = lang;
     var d = DICT[lang];
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var k = el.getAttribute('data-i18n');
-      var v = (lang === 'ja' || !d) ? null : (d[k] !== undefined ? d[k] : null);
-      if (v !== null) {
-        // use innerHTML if value contains HTML tags, otherwise textContent
-        if (v.indexOf('<') !== -1) {
-          el.innerHTML = v;
-        } else {
-          el.textContent = v;
-        }
+      // ja or 辞書なし or 未訳キー → 保存した日本語原文へ復元
+      var v = (lang === 'ja' || !d || d[k] === undefined) ? el.__ja : d[k];
+      if (v === undefined || v === null) return;
+      if (v.indexOf('<') !== -1) {
+        el.innerHTML = v;
+      } else {
+        el.textContent = v;
       }
-      // if v is null (ja or missing key) leave the inline Japanese intact
     });
     try { localStorage.setItem('hakoniwa.site.language', lang); } catch (e) {}
     var sel = document.getElementById('langSelect');
